@@ -24,16 +24,16 @@ internal class Program
 
         while (true)
         {
+            Console.WriteLine("Введите номер страницы (1-3)");
             var parsed = int.TryParse(Console.ReadLine(), out var pageNum);
 
             if (!parsed || !(pageNum < 4 & pageNum > 0))
             {
-                Console.WriteLine("Ввели ЕРЕСЬ");
+                Console.WriteLine("Ввод некоректен");
             }
             else
             {
                 var page = phoneBook.Skip(pageNum * 2 - 2).Take(2);
-
                 foreach (var contact in page)
                     Console.WriteLine(contact.Name + " " + contact.LastName + ": " + contact.PhoneNumber);
             }
